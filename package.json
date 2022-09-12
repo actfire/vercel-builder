@@ -1,7 +1,7 @@
 {
-  "name": "@nuxtjs/vercel-builder",
-  "version": "0.22.1",
-  "repository": "nuxt/vercel-builder",
+  "name": "@gefanxe/vercel-builder",
+  "version": "0.22.2",
+  "repository": "Gefanxe/vercel-builder",
   "license": "MIT",
   "exports": {
     ".": "./lib/index.js",
