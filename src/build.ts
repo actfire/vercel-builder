@@ -217,6 +217,16 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
     await fs.unlink('.npmrc')
   }
 
+  // ----------------- After build -----------------
+  const afterBuildSteps = ['vercel-after-build', 'after-build']
+  for (const step of afterBuildSteps) {
+    if (pkg.scripts && Object.keys(pkg.scripts).includes(step)) {
+      startStep(`After build (${step})`)
+      await runPackageJsonScript(entrypointPath, step, spawnOpts)
+      break
+    }
+  }
+
   // ----------------- Collect artifacts -----------------
   startStep('Collect artifacts')
 
