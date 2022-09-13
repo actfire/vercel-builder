@@ -31,7 +31,7 @@ interface NuxtBuilderConfig {
 export async function build (opts: BuildOptions & { config: NuxtBuilderConfig }): Promise<BuilderOutput> {
   const { files, entrypoint, workPath, config = {}, meta = {} } = opts
   // ---------------- Debugging context --------------
-  consola.log('Running with @nuxt/vercel-builder version', require('../package.json').version)
+  consola.log(`Running with ${require('../package.json').name} version ${require('../package.json').version}`)
 
   // ----------------- Prepare build -----------------
   startStep('Prepare build')
@@ -217,11 +217,11 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
     await fs.unlink('.npmrc')
   }
 
-  // ----------------- After build -----------------
-  const afterBuildSteps = ['vercel-after-build', 'after-build']
+  // ----------------- Post build -----------------
+  const afterBuildSteps = ['post-build', 'after-build']
   for (const step of afterBuildSteps) {
     if (pkg.scripts && Object.keys(pkg.scripts).includes(step)) {
-      startStep(`After build (${step})`)
+      startStep(`Post build (${step})`)
       await runPackageJsonScript(entrypointPath, step, spawnOpts)
       break
     }
