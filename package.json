@@ -1,6 +1,6 @@
 {
   "name": "@gefanxe/vercel-builder",
-  "version": "0.22.2",
+  "version": "0.22.3",
   "repository": "Gefanxe/vercel-builder",
   "license": "MIT",
   "exports": {
