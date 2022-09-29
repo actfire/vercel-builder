@@ -32,11 +32,8 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   const { files, entrypoint, workPath, config = {}, meta = {} } = opts
   // ---------------- Debugging context --------------
   consola.log(`Running with ${require('../package.json').name} version ${require('../package.json').version}`)
-  consola.log('debug:', path.dirname(entrypoint), workPath)
-  // Node version
-  const nodeVersionDebug = await getNodeVersion(path.join(workPath, path.dirname(entrypoint)), undefined, {}, meta)
-  const spawnOptsDebug = getSpawnOptions(meta, nodeVersionDebug)
-  await runPackageJsonScript('.', 'befo-build', spawnOptsDebug)
+
+  consola.log('debug:', process.cwd())
   // ----------------- Prepare build -----------------
   startStep('Prepare build')
 
