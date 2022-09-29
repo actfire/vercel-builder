@@ -1,7 +1,7 @@
 {
   "name": "@kkactfire/vercel-builder",
-  "version": "0.22.6",
-  "repository": "kkactfire/vercel-builder",
+  "version": "0.22.7",
+  "repository": "actfire/vercel-builder",
   "license": "MIT",
   "exports": {
     ".": "./lib/index.js",
