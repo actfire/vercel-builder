@@ -32,7 +32,7 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   const { files, entrypoint, workPath, config = {}, meta = {} } = opts
   // ---------------- Debugging context --------------
   consola.log(`Running with ${require('../package.json').name} version ${require('../package.json').version}`)
-
+  consola.log('debug:', entrypoint, workPath)
   // ----------------- Prepare build -----------------
   startStep('Prepare build')
 
@@ -218,6 +218,7 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   }
 
   // ----------------- Post build -----------------
+  consola.log('post-build:', entrypointPath, spawnOpts)
   const afterBuildSteps = ['post-build', 'after-build']
   for (const step of afterBuildSteps) {
     if (pkg.scripts && Object.keys(pkg.scripts).includes(step)) {
