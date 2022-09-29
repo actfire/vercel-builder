@@ -32,7 +32,7 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   const { files, entrypoint, workPath, config = {}, meta = {} } = opts
   // ---------------- Debugging context --------------
   consola.log(`Running with ${require('../package.json').name} version ${require('../package.json').version}`)
-  consola.log('debug:', entrypoint, workPath)
+  consola.log('debug:', path.dirname(entrypoint), workPath)
   // ----------------- Prepare build -----------------
   startStep('Prepare build')
 
