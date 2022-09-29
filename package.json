@@ -1,7 +1,7 @@
 {
-  "name": "@gefanxe/vercel-builder",
-  "version": "0.22.3",
-  "repository": "Gefanxe/vercel-builder",
+  "name": "@kkactfire/vercel-builder",
+  "version": "0.22.4",
+  "repository": "kkactfire/vercel-builder",
   "license": "MIT",
   "exports": {
     ".": "./lib/index.js",
