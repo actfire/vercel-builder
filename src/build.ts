@@ -33,6 +33,10 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   // ---------------- Debugging context --------------
   consola.log(`Running with ${require('../package.json').name} version ${require('../package.json').version}`)
   consola.log('debug:', path.dirname(entrypoint), workPath)
+  // Node version
+  const nodeVersionDebug = await getNodeVersion('.', undefined, {}, meta)
+  const spawnOptsDebug = getSpawnOptions(meta, nodeVersionDebug)
+  await runPackageJsonScript('.', 'befo-build', spawnOptsDebug)
   // ----------------- Prepare build -----------------
   startStep('Prepare build')
 
@@ -218,7 +222,6 @@ export async function build (opts: BuildOptions & { config: NuxtBuilderConfig })
   }
 
   // ----------------- Post build -----------------
-  consola.log('post-build:', entrypointPath, spawnOpts)
   const afterBuildSteps = ['post-build', 'after-build']
   for (const step of afterBuildSteps) {
     if (pkg.scripts && Object.keys(pkg.scripts).includes(step)) {
